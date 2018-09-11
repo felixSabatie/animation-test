@@ -1,1 +1,1 @@
-animation_test
+A simple animation test using webpack. Inspired by a tutorial from Grafikart https://www.grafikart.fr/tutoriels/html-css/animer-hamburger-icon-580 
