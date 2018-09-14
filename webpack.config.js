@@ -22,7 +22,7 @@ module.exports = {
       host: 'localhost',
       port: 3000,
       server: { baseDir: ['dist'] },
-      files: ['./**/*js', './**/*.html', './**/*.scss']
+      files: ['./**/*.js', './**/*.html', './**/*.scss']
     }),
     new ExtractTextPlugin({filename:'styles.css'}),
   ],
