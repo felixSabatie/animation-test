@@ -1,59 +1,90 @@
 body {
   background-color: #D64541;
   text-align: center;
-  font-family: sans-serif; }
-  body h1 {
-    color: #FFF;
-    font-size: 50px; }
-  body .sidebar {
-    background-color: #555;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    width: 350px;
-    transform: translateX(-350px);
-    transition: ease-in-out .3s; }
-    body .sidebar.open {
-      transform: translateX(0); }
-    body .sidebar .sidebar-content {
-      color: white; }
-  body .animated-burger {
-    display: inline-block;
-    width: 50px;
-    height: 50px;
-    background-color: rgba(0, 0, 0, 0.3);
-    border-radius: 50%;
-    position: relative;
-    transition: .5s; }
-    body .animated-burger span {
+  font-family: sans-serif;
+  margin: 0; }
+  body .main {
+    overflow-x: hidden;
+    height: 100vh; }
+    body .main .sidebar {
+      background-color: #555;
       position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translateX(-50%) translateY(-50%);
-      transition: .5s;
-      display: block;
-      height: 2px;
-      width: 22px;
-      background-color: #FFF; }
-      body .animated-burger span::before, body .animated-burger span::after {
+      top: 0;
+      bottom: 0;
+      left: 0;
+      width: 350px;
+      transform: translateX(-350px);
+      transition: ease-in-out 0.5s;
+      display: inline-block; }
+      body .main .sidebar.open {
+        transform: translateX(0); }
+      body .main .sidebar .sidebar-content {
+        color: white; }
+    body .main .content {
+      transform: translateX(0);
+      transition: ease-in-out 0.5s;
+      height: 100%;
+      vertical-align: top;
+      position: relative; }
+      body .main .content::before {
         content: '';
         position: absolute;
-        left: 0;
         top: 0;
-        transition: .5s;
-        display: block;
-        height: 2px;
-        width: 22px;
-        background-color: #FFF;
-        transform: translateY(-6px); }
-      body .animated-burger span::after {
-        transform: translateY(6px); }
-    body .animated-burger.burger-close {
-      transform: rotate(180deg); }
-      body .animated-burger.burger-close span {
-        background-color: transparent; }
-        body .animated-burger.burger-close span::before, body .animated-burger.burger-close span::after {
-          transform: translateY(0px) rotate(45deg); }
-        body .animated-burger.burger-close span::after {
-          transform: translateY(0px) rotate(-45deg); }
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0);
+        transition: 0.5s; }
+      body .main .content.sidebar-open {
+        transform: translateX(350px);
+        overflow: hidden; }
+      body .main .content.sidebar-open::before {
+        background: rgba(0, 0, 0, 0.5); }
+      body .main .content h1 {
+        color: #FFF;
+        font-size: 50px;
+        margin-top: 0;
+        padding-top: 20px; }
+      body .main .content .animated-burger-wrapper {
+        position: absolute;
+        top: 20px;
+        left: 20px; }
+        body .main .content .animated-burger-wrapper .animated-burger {
+          display: inline-block;
+          width: 50px;
+          height: 50px;
+          background-color: rgba(0, 0, 0, 0.3);
+          border-radius: 50%;
+          position: relative;
+          transition: .5s; }
+          body .main .content .animated-burger-wrapper .animated-burger span {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translateX(-50%) translateY(-50%);
+            transition: .5s;
+            display: block;
+            height: 2px;
+            width: 22px;
+            background-color: #FFF; }
+            body .main .content .animated-burger-wrapper .animated-burger span::before, body .main .content .animated-burger-wrapper .animated-burger span::after {
+              content: '';
+              position: absolute;
+              left: 0;
+              top: 0;
+              transition: .5s;
+              display: block;
+              height: 2px;
+              width: 22px;
+              background-color: #FFF;
+              transform: translateY(-6px); }
+            body .main .content .animated-burger-wrapper .animated-burger span::after {
+              transform: translateY(6px); }
+          body .main .content .animated-burger-wrapper .animated-burger.burger-close {
+            transform: rotate(180deg); }
+            body .main .content .animated-burger-wrapper .animated-burger.burger-close span {
+              background-color: transparent; }
+              body .main .content .animated-burger-wrapper .animated-burger.burger-close span::before, body .main .content .animated-burger-wrapper .animated-burger.burger-close span::after {
+                transform: translateY(0px) rotate(45deg); }
+              body .main .content .animated-burger-wrapper .animated-burger.burger-close span::after {
+                transform: translateY(0px) rotate(-45deg); }

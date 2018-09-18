@@ -1,87 +1,130 @@
 $factor: 1;
+$sidebarWidth: 350px;
+$animationDuration: .5s;
 
 body {
   background-color: #D64541;
   text-align: center;
   font-family: sans-serif;
+  margin: 0;
 
-  h1 {
-    color: #FFF;
-    font-size: 50px;
-  }
+  .main {
+    overflow-x: hidden;
+    height: 100vh;
 
-  .sidebar {
-    background-color: #555;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    width: 350px;
-    transform: translateX(-350px);
-    transition: ease-in-out .3s;
-
-    &.open {
-      transform: translateX(0);
-    }
-
-    .sidebar-content {
-      color: white;
-    }
-  }
-
-  .animated-burger {
-    display: inline-block;
-    width: 50px;
-    height: 50px;
-    background-color: rgba(0, 0, 0, 0.3);
-    border-radius: 50%;
-    position: relative;
-    transition: .5s;
-
-    span {
+    .sidebar {
+      background-color: #555;
       position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translateX(-50%) translateY(-50%);
-      transition: .5s;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      width: $sidebarWidth;
+      transform: translateX(-$sidebarWidth);
+      transition: ease-in-out $animationDuration;
+      display: inline-block;
 
-      display: block;
-      height: 2px;
-      width: 22px;
-      background-color: #FFF;
+      &.open {
+        transform: translateX(0);
+      }
+      .sidebar-content {
+        color: white;
+      }
+    }
 
-      &::before, &::after {
+    .content {
+      transform: translateX(0);
+      transition: ease-in-out $animationDuration;
+      height: 100%;
+      vertical-align: top;
+      position: relative;
+
+      &::before {
         content: '';
         position: absolute;
-        left: 0;
         top: 0;
-        transition: .5s;
-
-        display: block;
-        height: 2px;
-        width: 22px;
-        background-color: #FFF;
-
-        transform: translateY(-6px);
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0);
+        transition: $animationDuration;
       }
 
-      &::after {
-        transform: translateY(6px);
+      &.sidebar-open {
+        transform: translateX($sidebarWidth);
+        overflow: hidden;
       }
-    }
 
-    &.burger-close {
-      transform: rotate(180deg);
+      &.sidebar-open::before {
+        background: rgba(0, 0, 0, .5);
+      }
 
-      span {
-        background-color: transparent;
+      h1 {
+        color: #FFF;
+        font-size: 50px;
+        margin-top: 0;
+        padding-top: 20px;
+      }
 
-        &::before, &::after {
-          transform: translateY(0px) rotate(45deg);
-        }
+      .animated-burger-wrapper {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        .animated-burger {
+          display: inline-block;
+          width: 50px;
+          height: 50px;
+          background-color: rgba(0, 0, 0, 0.3);
+          border-radius: 50%;
+          position: relative;
+          transition: .5s;
 
-        &::after {
-          transform: translateY(0px) rotate(-45deg);
+          span {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translateX(-50%) translateY(-50%);
+            transition: .5s;
+
+            display: block;
+            height: 2px;
+            width: 22px;
+            background-color: #FFF;
+
+            &::before, &::after {
+              content: '';
+              position: absolute;
+              left: 0;
+              top: 0;
+              transition: .5s;
+
+              display: block;
+              height: 2px;
+              width: 22px;
+              background-color: #FFF;
+
+              transform: translateY(-6px);
+            }
+
+            &::after {
+              transform: translateY(6px);
+            }
+          }
+
+          &.burger-close {
+            transform: rotate(180deg);
+
+            span {
+              background-color: transparent;
+
+              &::before, &::after {
+                transform: translateY(0px) rotate(45deg);
+              }
+
+              &::after {
+                transform: translateY(0px) rotate(-45deg);
+              }
+            }
+          }
         }
       }
     }
